@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <style>
     .main-container{
         min-height: 95%;
@@ -21,39 +23,39 @@
     }
 </style>
 
-<html>
-    <body>
-        <div class='main-container'>
-            <div class='list-container'>
-                <div class='list-item'>Item 1</div>
-                <div class='list-item'>Item 2</div>
-                <div class='list-item'>Item 3</div>
-                <div class='list-item'>Item 4</div>
-                <div class='list-item'>Item 5</div>
-            </div>
+<body>
+    <div class='main-container'>
+        <div class='list-container'>
+            <div class='list-item'>Item 1</div>
+            <div class='list-item'>Item 2</div>
+            <div class='list-item'>Item 3</div>
+            <div class='list-item'>Item 4</div>
+            <div class='list-item'>Item 5</div>
         </div>
-    </body>
-</html>
+    </div>
+</body>
 
-<script>
-        var selected = false;
+<script type='text/javascript'>
+    var selected = false;
 
-        document.addEventListener('click', function(e){
-            // If clicked element not list item, ignore
-            if (!e.target.matches('.list-item')) return;
-            
-            //Clear any existing styling
-            if (selected){
-                var collection = document.getElementsByClassName('list-item');
-                for (var i = 0; i < collection.length; i++){
-                    collection[i].style.backgroundColor = '';
-                    collection[i].style.fontWeight = '';
-                }
+    document.addEventListener('click', function(e){
+        // If clicked element not list item, ignore
+        matches = e.target.matches ? e.target.matches('.list-item') : e.target.msMatchesSelector('.list-item');
+        if (!matches) return;
+        
+        //Clear any existing styling
+        if (selected){
+            var collection = document.getElementsByClassName('list-item');
+            for (var i = 0; i < collection.length; i++){
+                collection[i].style.backgroundColor = '';
+                collection[i].style.fontWeight = '';
             }
-            
-            e.target.style.backgroundColor = 'grey';
-            e.target.style.fontWeight = 'bold';
-            selected = true;
-            alert("You have chosen " + e.target.innerHTML);
-        }, false);
+        }
+        
+        e.target.style.backgroundColor = 'grey';
+        e.target.style.fontWeight = 'bold';
+        selected = true;
+        alert("You have chosen " + e.target.innerHTML);
+    }, false);
 </script>
+</html>
