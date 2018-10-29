@@ -2,29 +2,23 @@
     .main-container{
         min-height: 95%;
         max-height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         background-color: #e2d2f1;
+
+        text-align: center;
     }
     .list-container{
-        min-width: 95%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        min-width: 100%;
+        padding: 10% 0;
+        display: inline-block;
     }
     .list-item{
         min-width: 95%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         min-height: 35px;
         user-select: none;
         -ms-user-select: none;
     }
     .list-item:hover{
-        background-color: #ffbe49;
+        background-color: #ffbe498c;
         font-weight: bold;
     }
 </style>
@@ -33,32 +27,35 @@
     <body>
         <div class='main-container'>
             <div class='list-container'>
-                <div class='list-item'>
-                        Item 1
-                </div>
-                <div class='list-item'>
-                        Item 2
-                </div>
-                <div class='list-item'>
-                        Item 3
-                </div>
-                <div class='list-item'>
-                        Item 4
-                </div>
-                <div class='list-item'>
-                        Item 5
-                </div>
+                <div class='list-item'>Item 1</div>
+                <div class='list-item'>Item 2</div>
+                <div class='list-item'>Item 3</div>
+                <div class='list-item'>Item 4</div>
+                <div class='list-item'>Item 5</div>
             </div>
         </div>
     </body>
 </html>
 
 <script>
+        var selected = false;
+
         document.addEventListener('click', function(e){
             // If clicked element not list item, ignore
             if (!e.target.matches('.list-item')) return;
-    
-            e.preventDefault();
-            console.log(e.target);
+            
+            //Clear any existing styling
+            if (selected){
+                var collection = document.getElementsByClassName('list-item');
+                for (var i = 0; i < collection.length; i++){
+                    collection[i].style.backgroundColor = '';
+                    collection[i].style.fontWeight = '';
+                }
+            }
+            
+            e.target.style.backgroundColor = '#ffbe49';
+            e.target.style.fontWeight = 'bold';
+            selected = true;
+            alert("You have chosen " + e.target.innerHTML);
         }, false);
 </script>
